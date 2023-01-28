@@ -1,11 +1,13 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'; // Action
 import { variableApi } from './currency';
+import { apiApilayer } from './converter';
 // import reducerOne from '../SliceOne'; // rename from `export default SliceOne;`
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'; // for SSR
 
 const allReducers = combineReducers({
     // reducerOne,
     [variableApi.reducerPath]: variableApi.reducer,
+    [apiApilayer.reducerPath]: apiApilayer.reducer,
 })
 
 // const mainReducer: typeof allReducers = (state, action) => {
@@ -28,7 +30,7 @@ const store = () => {
     return configureStore({
         devTools: process.env.NODE_ENV !== 'production',
         reducer: allReducers, // allReducers, reducerOne, mainReducer
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(variableApi.middleware) // rdxtqCreateApiU
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(variableApi.middleware).concat(apiApilayer.middleware) // rdxtqCreateApiU
     })
 }
 
