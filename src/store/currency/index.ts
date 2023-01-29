@@ -5,7 +5,7 @@ export const variableApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'}),
     tagTypes:['variableTag'],
     endpoints: (builder) => ({
-        methodName1: builder.query<NBURate[],null>({
+        methodNBU1: builder.query<NBURate[],null>({
             query: () => '',
             providesTags:['variableTag'],
             }),
@@ -13,8 +13,8 @@ export const variableApi = createApi({
 });
 
 // For`use` + `MethodName` + `Query` or `Mutation`, useLazyQuery - for handle onClick and Fire hook on Action ( Clock ...) 
-export const { useMethodName1Query, useLazyMethodName1Query } = variableApi;
+export const { useMethodNBU1Query, useLazyMethodNBU1Query } = variableApi;
 
 // SSR, Not Always Need
 export const { util: { getRunningQueriesThunk } } = variableApi; // waite untill all tasks are done
-export const { methodName1 } = variableApi.endpoints;
+export const { methodNBU1 } = variableApi.endpoints;

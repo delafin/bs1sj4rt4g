@@ -7,18 +7,21 @@ type TInputValues = {
 };
 export const apiApilayer = createApi({
     reducerPath: 'apiApilayer',
-    baseQuery: fetchBaseQuery({baseUrl: 'https://api.apilayer.com/exchangerates_data',
-    prepareHeaders: (headers) => {
-        headers.set('apikey', process.env.APILAYER_EXCHANGE_RATES_API!)
-        console.log(headers);
-        return headers
+    baseQuery: fetchBaseQuery({baseUrl: 'https://api.apilayer.com/currency_data',
+    prepareHeaders: (headers)  => {
+        headers.set('apikey', process.env.NEXT_PUBLIC_APILAYER_EXCHANGE_RATES_API!)
+        return headers;
       },
     }),
-    // {apikey: process.env.APILAYER_EXCHANGE_RATES_API 
     tagTypes:['ApilayerTag'],
     endpoints: (builder) => ({
-        methodApilayer1: builder.query<Apilayer,TInputValues>({
-            query: ({toCur,fromCur,amountCur} :{toCur:string,fromCur:string,amountCur:string | number}) => `/convert?to=${toCur}&${fromCur}=from&amount=${amountCur}`,
+        methodApilayer1: builder.query<IListConvert,TInputValues>({
+            // query: ({toCur,fromCur,amountCur} :{toCur:string,fromCur:string,amountCur:string | number}) => `/convert?to=${toCur}&from=${fromCur}&amount=${amountCur}`,
+            query: ({toCur,fromCur,amountCur}) => `/convert?to=${toCur}&from=${fromCur}&amount=${amountCur}`,
+            providesTags:['ApilayerTag'],
+            }),
+        methodApilayer2: builder.query<IListCurrency,null>({
+            query: () => `/list`,
             providesTags:['ApilayerTag'],
             }),
     })
@@ -26,7 +29,7 @@ export const apiApilayer = createApi({
 });
 
 // For`use` + `MethodName` + `Query` or `Mutation`, useLazyQuery - for handle onClick and Fire hook on Action ( Clock ...) 
-export const { useMethodApilayer1Query, useLazyMethodApilayer1Query } = apiApilayer;
+export const { useMethodApilayer1Query, useLazyMethodApilayer1Query, useMethodApilayer2Query } = apiApilayer;
 
 // SSR, Not Always Need
 export const { util: { getRunningQueriesThunk } } = apiApilayer; // waite untill all tasks are done

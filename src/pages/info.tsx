@@ -1,5 +1,5 @@
 import { type NextPage } from 'next';
-import { useMethodName1Query } from '../store/currency';
+import { useMethodNBU1Query } from '../store/currency';
 import {useState} from 'react';
 const Info: NextPage = () => {
     const [currency, setCurrency] = useState();
@@ -8,10 +8,7 @@ const Info: NextPage = () => {
                 data,
                 isFetching,
                 isLoading,
-                isSuccess,
-                isError,
-                error,
-            } = useMethodName1Query(null);
+            } = useMethodNBU1Query(null);
 
 	return (
         <section className='py-10'>
@@ -21,13 +18,13 @@ const Info: NextPage = () => {
                         <div className='relative flex justify-center items-center rounded-md caret-[#1a73e8] border-[#dadce0]  transition-all h-10 border-[1px] focus-within:border-[#1a73e8] w-full px-3'>
                                 <select name='from' id='from' className='w-full outline-none text-black px-3' defaultValue='UAH'>
                                 <option value='UAH' className='w-full'>UAH</option>
-                                {isLoading || isFetching ? null : 
+                                {/* {isLoading || isFetching ? null : 
                                     data && data.map((item, i) => {
                                         return (
                                                 <option key={i} value={item.cc} className='w-full'>{item.cc}</option>
                                             );
                                     })
-                                }
+                                } */}
                                 </select>
                         </div>
                         {isLoading || isFetching ? <h1>Loading...</h1> :
@@ -54,8 +51,6 @@ const Info: NextPage = () => {
                                 </tbody> 
                         </table>      
                 }
-
-                               
                     </div>
                 </div>
         </section>
