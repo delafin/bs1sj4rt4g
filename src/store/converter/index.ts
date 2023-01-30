@@ -7,8 +7,9 @@ type TInputValues = {
 };
 export const apiApilayer = createApi({
     reducerPath: 'apiApilayer',
-    baseQuery: fetchBaseQuery({baseUrl: 'https://api.apilayer.com/currency_data',
-    prepareHeaders: (headers)  => {
+    baseQuery: fetchBaseQuery({baseUrl: 'https://api.apilayer.com/currency_data', // requests amount: 100
+    // baseQuery: fetchBaseQuery({baseUrl: 'https://api.apilayer.com/exchangerates_data', // another api w/ largest amount of requests 250
+    prepareHeaders: (headers) => {
         headers.set('apikey', process.env.NEXT_PUBLIC_APILAYER_EXCHANGE_RATES_API!)
         return headers;
       },
@@ -21,7 +22,8 @@ export const apiApilayer = createApi({
             providesTags:['ApilayerTag'],
             }),
         methodApilayer2: builder.query<IListCurrency,null>({
-            query: () => `/list`,
+            query: () => `/list`, 
+            // query: () => `/symbols`, // for exchangerates_data api
             providesTags:['ApilayerTag'],
             }),
     })

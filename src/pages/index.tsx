@@ -38,7 +38,10 @@ const Home: NextPage = () => {
         // async () => {
         //     await  
         // }
-        void trigger({toCur,fromCur,amountCur});
+        // due api request limit
+        if (fromCur.length > 1 && toCur.length > 1 && amountCur.length > 1) {
+            void trigger({toCur,fromCur,amountCur});
+        }
     }
 
     const onHancleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
