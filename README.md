@@ -1,3 +1,3 @@
 # Usage
 
-- <code>npm run dev<code>
+- <code>npm run dev</code>
