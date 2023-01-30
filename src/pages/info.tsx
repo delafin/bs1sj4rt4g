@@ -1,9 +1,6 @@
 import { type NextPage } from 'next';
 import { useMethodNBU1Query } from '../store/currency';
-import {useState} from 'react';
 const Info: NextPage = () => {
-    const [currency, setCurrency] = useState();
-
         const {
                 data,
                 isFetching,

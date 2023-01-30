@@ -15,4 +15,4 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     );
 };
 
-export default wrapper.withRedux(MyApp);
+export default wrapper.withRedux(MyApp); // SSR or useWrappedStore

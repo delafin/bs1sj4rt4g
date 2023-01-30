@@ -28,9 +28,9 @@ export const apiApilayer = createApi({
     
 });
 
-// For`use` + `MethodName` + `Query` or `Mutation`, useLazyQuery - for handle onClick and Fire hook on Action ( Clock ...) 
+
 export const { useMethodApilayer1Query, useLazyMethodApilayer1Query, useMethodApilayer2Query } = apiApilayer;
 
-// SSR, Not Always Need
-export const { util: { getRunningQueriesThunk } } = apiApilayer; // waite untill all tasks are done
+// SSR
+export const { util: { getRunningQueriesThunk } } = apiApilayer; 
 export const { methodApilayer1 } = apiApilayer.endpoints;

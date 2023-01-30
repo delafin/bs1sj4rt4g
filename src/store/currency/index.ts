@@ -12,9 +12,8 @@ export const variableApi = createApi({
     })
 });
 
-// For`use` + `MethodName` + `Query` or `Mutation`, useLazyQuery - for handle onClick and Fire hook on Action ( Clock ...) 
 export const { useMethodNBU1Query, useLazyMethodNBU1Query } = variableApi;
 
-// SSR, Not Always Need
-export const { util: { getRunningQueriesThunk } } = variableApi; // waite untill all tasks are done
+// SSR
+export const { util: { getRunningQueriesThunk } } = variableApi;
 export const { methodNBU1 } = variableApi.endpoints;
